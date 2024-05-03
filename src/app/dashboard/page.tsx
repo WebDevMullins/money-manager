@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 
 import CreateTransaction from './_components/CreateTransactionDialog'
 import Overview from './_components/Overview'
+import History from './_components/History'
 
 export default async function DashboardPage() {
 	const user = await currentUser()
@@ -57,6 +58,7 @@ export default async function DashboardPage() {
 				</div>
 			</div>
 			<Overview userSettings={userSettings} />
+			<History userSettings={userSettings} />
 		</div>
 	)
 }
