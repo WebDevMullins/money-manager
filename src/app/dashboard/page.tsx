@@ -4,7 +4,9 @@ import { MinusIcon, PlusIcon } from 'lucide-react'
 import { redirect } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
+
 import CreateTransaction from './_components/CreateTransactionDialog'
+import Overview from './_components/Overview'
 
 export default async function DashboardPage() {
 	const user = await currentUser()
@@ -54,6 +56,7 @@ export default async function DashboardPage() {
 					</div>
 				</div>
 			</div>
+			<Overview userSettings={userSettings} />
 		</div>
 	)
 }
