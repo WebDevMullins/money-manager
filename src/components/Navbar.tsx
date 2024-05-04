@@ -25,7 +25,7 @@ function Navbar() {
 const links = [
 	{ label: 'Dashboard', href: '/dashboard' },
 	{ label: 'Transactions', href: '/transactions' },
-	{ label: 'Manage', href: '/manage' }
+	{ label: 'Settings', href: '/settings' }
 ]
 
 function MobileNavbar() {
