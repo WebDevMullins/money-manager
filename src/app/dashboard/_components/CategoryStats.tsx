@@ -2,15 +2,17 @@
 
 import type { UserSettings } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 import type { GetCategoryStatsResponseType } from '@/app/api/stats/category/route'
+
 import SkeletonWrapper from '@/components/SkeletonWrapper'
 import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { ScrollArea } from '@/components/ui/scroll-area'
+
 import { DateToUTC, GetFormattedCurrency } from '@/lib/helpers'
 import { type TransactionType } from '@/lib/types'
-import { useMemo } from 'react'
 
 interface CategoryStatsProps {
 	userSettings: UserSettings
