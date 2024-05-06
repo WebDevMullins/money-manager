@@ -1,6 +1,11 @@
 'use client'
 
+import { useMediaQuery } from '@/hooks/use-media-query'
+import { currencies, type Currency } from '@/lib/currencies'
+import { type UserSettings } from '@prisma/client'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import SkeletonWrapper from '@/components/SkeletonWrapper'
 import { Button } from '@/components/ui/button'
@@ -19,12 +24,7 @@ import {
 	PopoverTrigger
 } from '@/components/ui/popover'
 
-import { UpdateUserCurrency } from '@/app/onboarding/_actions/userSettings'
-import { useMediaQuery } from '@/hooks/use-media-query'
-import { currencies, type Currency } from '@/lib/currencies'
-import { type UserSettings } from '@prisma/client'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { toast } from 'sonner'
+import { UpdateUserCurrency } from '@/app/(app)/onboarding/_actions/userSettings'
 
 export function CurrencySelector() {
 	const [open, setOpen] = useState(false)

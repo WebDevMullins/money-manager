@@ -9,8 +9,8 @@ import {
 	TrendingUpIcon
 } from 'lucide-react'
 
-import { CurrencySelector } from '@/components/CurrencySelector'
 import SkeletonWrapper from '@/components/SkeletonWrapper'
+import { CurrencySelector } from '@/components/currency-selector'
 import { Button } from '@/components/ui/button'
 import {
 	Card,
@@ -19,13 +19,13 @@ import {
 	CardHeader,
 	CardTitle
 } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 import CreateCategoryDialog from '../dashboard/_components/CreateCategoryDialog'
+import DeleteCategoryDialog from '../dashboard/_components/DeleteCategoryDialog'
 
-import { Separator } from '@/components/ui/separator'
 import { type TransactionType } from '@/lib/types'
 import { cn } from '@/lib/utils'
-import DeleteCategoryDialog from '../dashboard/_components/DeleteCategoryDialog'
 
 export default function SettingsPage() {
 	return (
@@ -40,7 +40,7 @@ export default function SettingsPage() {
 					</div>
 				</div>
 			</div>
-			<div className='container flex flex-col gap-4 p-4'>
+			<div className='container flex min-h-[calc(100dvh-30rem)] flex-col gap-4 p-4'>
 				<Card>
 					<CardHeader>
 						<CardTitle>Currency</CardTitle>

@@ -29,7 +29,8 @@ export default function RootLayout({
 				lang='en'
 				className='dark'
 				style={{ colorScheme: 'dark' }}>
-				<body className={`font-sans ${inter.variable}`}>
+				<body
+					className={`font-sans ${inter.variable} relative flex h-dvh w-full flex-col`}>
 					<Toaster
 						richColors
 						position='bottom-right'

@@ -6,8 +6,8 @@ import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 
 import CreateTransaction from './_components/CreateTransactionDialog'
-import Overview from './_components/Overview'
 import History from './_components/History'
+import Overview from './_components/Overview'
 
 export default async function DashboardPage() {
 	const user = await currentUser()
@@ -27,7 +27,7 @@ export default async function DashboardPage() {
 	}
 
 	return (
-		<div className='h-full bg-background'>
+		<div className='min-h-dvh bg-background'>
 			<div className='border-b bg-card'>
 				<div className='container flex flex-wrap items-center justify-between gap-6 py-8'>
 					<p className='text-3xl font-bold'>Welcome, {user.firstName}! 👋🏼</p>

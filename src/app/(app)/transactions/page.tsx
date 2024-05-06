@@ -12,7 +12,7 @@ import { DataTable } from './data-table'
 import { MAX_DATE_RANGE_DAYS } from '@/lib/constants'
 import { DateToUTC } from '@/lib/helpers'
 
-import type { GetTransactionHistoryResponseType } from '../api/transactions/route'
+import type { GetTransactionHistoryResponseType } from '../../api/transactions/route'
 
 function TransactionsPage() {
 	const [dateRange, setDateRange] = useState({
@@ -38,9 +38,7 @@ function TransactionsPage() {
 		<>
 			<div className='border-b bg-card'>
 				<div className='container flex flex-wrap items-center justify-between gap-6 py-8'>
-					<div>
-						<p className='text-3xl font-bold'>Transactions History</p>
-					</div>
+					<p className='text-3xl font-bold'>Transactions History</p>
 					<DateRangePicker
 						initialDateFrom={dateRange.from}
 						initialDateTo={dateRange.to}
@@ -61,7 +59,7 @@ function TransactionsPage() {
 					/>
 				</div>
 			</div>
-			<div className='container'>
+			<div className='container min-h-[calc(100dvh-30rem)]'>
 				<DataTable
 					columns={columns}
 					data={history.data ?? noData}
