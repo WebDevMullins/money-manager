@@ -1,11 +1,11 @@
 'use client'
 
-import { UserButton } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import Logo, { LogoMobile } from '@/components/Logo'
-import { ModeToggle } from '@/components/ModeToggle'
+import { ModeToggleButton } from '@/components/mode-toggle-button'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
@@ -64,7 +64,7 @@ function MobileNavbar() {
 					<LogoMobile />
 				</div>
 				<div className='flex items-center gap-2'>
-					<ModeToggle />
+					<ModeToggleButton />
 					<UserButton />
 				</div>
 			</nav>
@@ -74,7 +74,7 @@ function MobileNavbar() {
 
 function DesktopNavbar() {
 	return (
-		<div className='hidden border-separate border-b bg-background md:block'>
+		<div className='fixed top-0 z-50 mx-auto hidden w-full border-separate border-b bg-transparent backdrop-blur-xl md:block'>
 			<nav className='container flex items-center justify-between px-8'>
 				<div className='flex h-[80px] min-h-[60px] items-center gap-x-4'>
 					<Logo />
@@ -89,8 +89,19 @@ function DesktopNavbar() {
 					</div>
 				</div>
 				<div className='flex items-center gap-2'>
-					<ModeToggle />
-					<UserButton />
+					<SignedOut>
+						<SignInButton>
+							<Button variant={'outline'}>Login</Button>
+						</SignInButton>
+						<SignInButton>
+							<Button>Get Started Now</Button>
+						</SignInButton>
+					</SignedOut>
+					{/* <UserButton /> */}
+					<SignedIn>
+						<ModeToggleButton />
+						<UserButton />
+					</SignedIn>
 				</div>
 			</nav>
 		</div>

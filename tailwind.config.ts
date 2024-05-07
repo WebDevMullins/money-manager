@@ -1,5 +1,9 @@
 import type { Config } from 'tailwindcss'
 
+import svgToDataUri from 'mini-svg-data-uri'
+
+import { default as flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette'
+
 const config = {
 	darkMode: ['class'],
 	content: [
@@ -74,7 +78,39 @@ const config = {
 			}
 		}
 	},
-	plugins: [require('tailwindcss-animate')]
+	plugins: [
+		require('tailwindcss-animate'),
+		function ({ matchUtilities, theme }: unknown) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			matchUtilities(
+				{
+					'bg-grid': (value: number) => ({
+						backgroundImage: `url("${svgToDataUri(
+							`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="128" height="128" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
+						)}")`
+					}),
+					'bg-grid-small': (value: number) => ({
+						backgroundImage: `url("${svgToDataUri(
+							`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
+						)}")`
+					}),
+					'bg-dot': (value: number) => ({
+						backgroundImage: `url("${svgToDataUri(
+							`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`
+						)}")`
+					})
+				},
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+				{
+					values: flattenColorPalette(
+						// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+						theme('backgroundColor') as Record<string, string>
+					),
+					type: 'color'
+				}
+			)
+		}
+	]
 } satisfies Config
 
 export default config

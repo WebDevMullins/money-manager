@@ -1,13 +1,11 @@
-import Navbar from '@/components/Navbar'
 import Footer from '@/components/site-footer'
+import { SiteHeader } from '@/components/site-header'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
-			<Navbar />
-			<main className='relative flex w-full flex-col justify-between pb-12'>
-				{children}
-			</main>
+			<SiteHeader />
+			<main className='flex-1 flex-col pb-16'>{children}</main>
 			<Footer />
 		</>
 	)

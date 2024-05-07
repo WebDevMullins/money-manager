@@ -29,13 +29,14 @@ export default function RootLayout({
 				lang='en'
 				className='dark'
 				style={{ colorScheme: 'dark' }}>
-				<body
-					className={`font-sans ${inter.variable} relative flex h-dvh w-full flex-col`}>
+				<body className={`font-sans ${inter.variable} min-h-dvh`}>
 					<Toaster
 						richColors
 						position='bottom-right'
 					/>
-					<RootProviders>{children}</RootProviders>
+					<RootProviders>
+						<div className='relative flex flex-col'>{children}</div>
+					</RootProviders>
 				</body>
 			</html>
 		</ClerkProvider>
